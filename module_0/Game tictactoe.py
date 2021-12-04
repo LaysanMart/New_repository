@@ -13,13 +13,17 @@ def show_field(field):
 
 def player_entry(player_token):
    """Проверка введенного пользователем значения"""
+
    while True:
-      answer = int(input("Очередь хода " + player_token))
-      if answer < 1 or answer > 9:
+      answer = (input("Очередь хода " + player_token))
+      if not (answer.isdigit()):
+          print(" Введите числа! ")
+          continue
+      if int(answer) < 1 or int(answer) > 9:
           print("Что-то не так! Введи число от 1 до 9.")
           continue
-      if (field[answer - 1]) in [1,2,3,4,5,6,7,8,9]:
-          field[answer - 1] = player_token
+      if (field[int(answer) - 1]) in [1,2,3,4,5,6,7,8,9]:
+          field[int(answer) - 1] = player_token
           return False
       else:
             print("Клетка занята")
